@@ -1,6 +1,6 @@
 const express = require("express")
+const findById = require("../../services/user")
 const router = express.Router()
-const users = ['Bruno', 'Betania']
 router.get("/users", (req, res) =>{
     res.send("Users")
 })
@@ -10,6 +10,6 @@ router.post("/users", (req, res) =>{
 })
 router.get("/users/:userid", (req, res) => {
 
-    res.send(users[req.params.userid])
+    res.send(findById(req.params.userid))
 })
 module.exports = router
