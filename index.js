@@ -2,7 +2,9 @@ const express = require("express")
 const app = express()
 const userRouter = require("./app/routes/user")
 const User = require('./app/models/user');
-const sequelize = require('./config/mysql');
+require("dotenv").config();
+
+
 
 
 app.use(express.json())
