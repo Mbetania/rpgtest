@@ -1,21 +1,25 @@
-// const Sequelize = require("sequelize");
-// require("dotenv").config();
+const mysql = require('mysql2')
 
-// const sequelize = new Sequelize(
-//     process.env.DB_DATABASE,
-//     process.env.DB_USER,
-//     process.env.DB_PASSWORD,
-//     {
-//         host: process.env.DB_HOST,
-//         dialect: "mysql",
-//     }
-// );
-// console.log(process.env.DB_PASSWORD)
-// sequelize
-//     .authenticate()
-//     .then(() => {
-//         console.log(`Connection has been ${DB_DATABASE}established successfully. ${DB_DATABASE}`);
-//     })
-//     .catch((err) => {
-//         console.error("Unable to connect to the database:", err);
-//     });
+export const conexion = mysql.createConnection({
+    host: 'localhost',
+    user: 'root',
+    password: process.env.DB_PASSWORD,
+    port: 3306,
+    database: process.env.DB_DATABASE
+})
+
+conexion.connect(function(error){
+    if(error){
+        throw error;
+    }else{
+        console.log('conexion exitosa')
+    }
+});
+conexion.query('SELECT * FROM userData', function(error, results, fields){
+    if(error)
+    throw error;
+
+    results.forEach(result => {
+        console.log(result)
+    });
+})
