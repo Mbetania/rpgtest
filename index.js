@@ -1,11 +1,8 @@
-const express = require("express")
-import {conexion} from './db.js'
+import express  from "express"
+import { pool } from './db.js'
+import * as dotenv from 'dotenv'
+dotenv.config()
 const app = express()
-// const userRouter = require("./app/routes/user")
-// const User = require('./app/models/user');
-require("dotenv").config();
-
-// app.use(express.json())
 const port = 3001
 
 app.listen(port, () =>{
@@ -16,7 +13,7 @@ app.get("/", (req, res) =>{
     res.send("hello")
 })
 app.get("/ping", async (req,res) => {
-    const result =  await conexion.query('SELECT * FROM userData' )
+    const [result] =  await pool.query('SELECT 1 + 1 AS Result' )
     res.json(result)
 })
 // app.use(userRouter)
