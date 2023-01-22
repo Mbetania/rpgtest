@@ -1,0 +1,54 @@
+// import { pool } from '../../db.js'
+
+
+
+export const getUsers = (req, res) => { 
+    
+    res.send('obteniendo empleados')
+}
+export const createUser = (req,res) => {
+    // pool.query('INSERT INTO users_data (username, stage) values (?,?)', []
+    res.send('post success')
+}
+export const updateUsers = (req,res) => res.send('actualizando users')
+export const deleteUsers = (req,res) => res.send('eliminando users')
+
+// exports.getAllUsers = async (req, res, next) => {
+//     try {
+//         const users = await User.findAll();
+//         res.send(users);
+//     } catch (error) {
+//         next(error);
+//     }
+// };
+
+// exports.getUserById = async (req, res, next) => {
+//     try {
+//         const ID = Number(req.params.ID)
+//         const user = await User.findOne({ where: { ID } });
+//         if (!user) {
+//             return res.status(404).send({
+//                 message: 'User Not Found',
+//             });
+//         }res.send(user);
+//     } catch (error) {
+//         next(error);
+//     }
+// };
+
+
+// exports.createUser = async (req, res, next) => {
+//     try {
+//         const { userName,ID, stage, chest, weapon } = req.body;
+//         const createUser = await User.create({
+//             userName,
+//             ID,
+//             stage,
+//             chest,
+//             weapon
+//         });
+//         res.send(createUser);
+//     } catch (error) {
+//         next(error);
+//     }
+// };
