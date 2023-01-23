@@ -13,7 +13,7 @@ app.get("/", (req, res) =>{
     res.send("hello")
 })
 app.use(indexRouter)
-app.use(userRouter)
+app.use('/api', userRouter)
 
 app.listen(3001, () =>{
     console.log(`servidor escuchando puerto n° 3001`)
