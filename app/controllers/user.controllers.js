@@ -24,7 +24,7 @@ export const getUser = async (req, res) =>{
     }
 }
 
-export const createUser = async (req,res, next) => {
+export const  createUser = async (req,res, next) => {
     try{
         let { username, stage, chest, weapon } = req.body;
         stage = stage || 'limbo';
