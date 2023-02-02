@@ -52,8 +52,6 @@ export const deleteUsers = async (req,res) => {
     res.sendStatus(204)
 }
 
-
-
 export const updateUsers = async (req, res, next) => {
     try{
         const { id } = req.params
@@ -69,6 +67,23 @@ export const updateUsers = async (req, res, next) => {
         next(error)
     }    
 }
+
+export const updateData = async (id, column, value) => {
+    if (['stage', 'chest', 'weapon'].indexOf(column) === -1) {
+        return { error: `La columna "${column}" no es válida.` };
+    }
+    
+    // Actualización de la base de datos
+    const [results] = await pool.query(
+        `UPDATE users_data SET ${column} = ? WHERE id = ?`,
+        [value, id],
+    );
+    
+    console.log(results);
+    return results;
+};
+
+
 
 
 
